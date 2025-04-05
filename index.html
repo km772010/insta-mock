@@ -7,13 +7,22 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fafafa;
+      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
       margin: 0;
     }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
     .container {
       background: white;
       border: 1px solid #dbdbdb;
@@ -21,7 +30,9 @@
       width: 300px;
       text-align: center;
       border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
+
     input {
       width: 100%;
       padding: 10px;
@@ -30,6 +41,7 @@
       border: 1px solid #dbdbdb;
       border-radius: 5px;
     }
+
     button {
       width: 100%;
       padding: 10px;
@@ -39,12 +51,20 @@
       font-weight: bold;
       border-radius: 5px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
+
+    button:hover {
+      background-color: #2b80e4;
+    }
+
     .logo {
-      font-size: 32px;
+      font-size: 36px;
       font-family: 'Billabong', cursive;
       margin-bottom: 20px;
+      color: #262626;
     }
+
     .result {
       margin-top: 20px;
       text-align: left;
