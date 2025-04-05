@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instagram Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .container {
+      background: white;
+      border: 1px solid #dbdbdb;
+      padding: 40px;
+      width: 300px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #dbdbdb;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3897f0;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2b80e4;
+    }
+
+    .logo {
+      font-size: 36px;
+      font-family: 'Billabong', cursive;
+      margin-bottom: 20px;
+      color: #262626;
+    }
+
+    .result {
+      margin-top: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="loginForm">
+    <div class="logo">Instagram</div>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button onclick="handleLogin()">Log In</button>
+  </div>
+
+  <div class="container" id="resultDisplay" style="display: none;">
+    <div class="logo">Welcome</div>
+    <div class="result">
+      <p><strong>Email:</strong> <span id="showEmail"></span></p>
+      <p><strong>Password:</strong> <span id="showPassword"></span></p>
+    </div>
+  </div>
+
+  <script>
+    function handleLogin() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        alert("Please fill in both fields.");
+        return;
+      }
+
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("resultDisplay").style.display = "block";
+
+      document.getElementById("showEmail").textContent = email;
+      document.getElementById("showPassword").textContent = password;
+    }
+  </script>
+
+</body>
+</html>
